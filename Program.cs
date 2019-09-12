@@ -10,10 +10,11 @@ namespace ryggsäck
 {
     public class Inventory
     {
-        public Inventory(IEnumerable<string> items){}
-        public List<string> Items {get; set;}
+        public Inventory(List<string> items){}
+       
+        public List<string> Content {get; set;}
 
-        public void addItem(string item) => Items.Add(item);
+
     }
     public class Menu
     {
@@ -101,15 +102,12 @@ namespace ryggsäck
         static void Main(string[] args)
         {
             string[] menuContent = {"Lägg till ett föremål", "Skriv ut innehållet", "Rensa innehållet", "Avsluta"}; // Vad som ska med i menyn
-            string[] bagContent = {};
 
             var menu = new Menu (menuContent);  
-            var inventory = new Inventory(bagContent);
+            var inventory = new Inventory(new List<string>{});
             
            
             menu = GetMenu(menu);
-
-
 
             Console.ForegroundColor = ConsoleColor.DarkRed;           // Byter färg på texten inför nästa utskrift
             
@@ -123,7 +121,7 @@ namespace ryggsäck
                     Console.Clear();
                     Console.Write("Vilket föremål vill du lägga till?: ");
                     string foobar = Console.ReadLine();
-                    Inventory.addItem(foobar);
+                    inventory.Content.Add(foobar);
                 break;
 
             }
